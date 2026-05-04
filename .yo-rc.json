@@ -1,0 +1,13 @@
+{
+  "generator-ui5-project": {
+    "namespaceUI5": "com.contax",
+    "projectName": "warehouseAnalytics",
+    "uimoduleName": "myui5app",
+    "enableFPM": false,
+    "platform": "Static webserver",
+    "ui5Libs": "Content delivery network (SAPUI5)",
+    "newDir": true,
+    "initRepo": true,
+    "projectId": "com.contax.warehouseAnalytics"
+  }
+}

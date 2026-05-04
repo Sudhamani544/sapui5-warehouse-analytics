@@ -1,0 +1,49 @@
+<mvc:View controllerName="myui5app.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:layout="sap.ui.layout"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:vizData="sap.viz.ui5.data"
+    height="100%">
+    <Page id="page" class="sapUiContentCenter" title="{i18n>title}" titleAlignment="Center">
+        <content>
+            <layout:FixFlex id='chartFixFlex' minFlexSize="250">
+                <layout:fixContent>
+                <VBox id="chartHolder" alignItems="Center" busyIndicatorDelay="0" justifyContent="Center" class="contentPadding sapUiContentPadding">
+                    <Text id="welcomeText" text="{i18n>welcomeMessage}" class="sapUiLargeMarginBottom sapUiMediumMarginTop"/>
+                    <Text id="welcomeDescriptionText" text="{i18n>welcomeDescription}" class="sapUiSmallMarginBottom"/>
+                    <Text id="selectMetricText" text="{i18n>selectMetric}" class="sapUiSmallMarginBottom"/>
+                    <RadioButtonGroup id="metricGroup" select="onMetricSelect" selectedIndex="-1" columns="2" class="sapUiMediumMarginBottom">
+                        <RadioButton id="metric1" text="{i18n>Metric1}"/>
+                        <RadioButton id="metric2" text="{i18n>Metric2}"/>
+                    </RadioButtonGroup>
+
+                    <!-- First Chart -->
+                    <Title id="titleChart1" text="{i18n>titleChart1}" level="H1" class="sapUiLargeMarginTop" visible="false" />
+                    <viz:VizFrame id="chartContainer1" height="400px" width="900px" vizType="line" visible="false" class="sapUiResponsiveMargin"/>
+
+                    <!-- Second Chart (Part 2: Shipper Performance) -->
+                    <Title id="titleChart2" text="{i18n>titleChart2}" level="H1" class="sapUiLargeMarginTop" visible="false"/>
+                    <HBox id="countrySelectorBox" alignItems="Center" displayInline="true" visible="false" class="sapUiSmallMarginBottom">
+                        <Label id="countrySelectorLabel" 
+                            text="{i18n>destinationCountry}" 
+                            class="sapUiSmallMarginEnd"/>
+                            
+                        <Select id="countrySelector"
+                                items="{countryModel>/}" 
+                                change="onCountryChange"
+                                width="200px">
+                            <core:Item id="_IDGenItem" key="{countryModel>key}" text="{countryModel>text}" />
+                        </Select>
+                    </HBox>
+                    
+                    <viz:VizFrame id="chartContainer2" height="400px" width="900px" vizType="combination" visible="false" class="sapUiResponsiveMargin"/>
+                </VBox>
+                </layout:fixContent>
+            </layout:FixFlex>
+
+        </content>
+    </Page>
+</mvc:View>
