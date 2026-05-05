@@ -3,3 +3,9 @@
 .contentPadding {
     padding: 20px;
 }
+/* Make charts shorter on mobile so the user can see the title and chart at once */
+@media (max-width: 600px) {
+    .sapUiResponsiveMargin {
+        height: 300px !important;
+    }
+}

@@ -188,7 +188,7 @@ sap.ui.define([
                     dataPointStyle: { "rules": aRules },
                     line: { marker: { visible: true }, width: 2 },
                 },
-                valueAxis: { title: { text: "AvgDays (Bar) & OrderCount (Line)" } },
+                valueAxis: { title: { text: "AvgDeliveryDays (Bar) & OrderVolume (Line)" } },
                 title: { visible: false }
             });
         },
@@ -200,12 +200,13 @@ sap.ui.define([
             var iSelectedIndex = oEvent.getSource().getSelectedIndex();
             var oView = this.getView();
             
-            oView.byId("chartContainer1").setVisible(iSelectedIndex === 0);
-            oView.byId("chartContainer2").setVisible(iSelectedIndex === 1);
-            oView.byId("titleChart1").setVisible(iSelectedIndex === 0);
-            oView.byId("titleChart2").setVisible(iSelectedIndex === 1);
-            oView.byId("countrySelectorBox").setVisible(iSelectedIndex === 1);
-
+            oView.byId("section1").setVisible(iSelectedIndex === 0);
+            oView.byId("section2").setVisible(iSelectedIndex === 1);
+            var oVizFrame = this.getView().byId("chartContainer1");
+            // This tells the chart to listen for window resize/orientation events
+            sap.ui.core.ResizeHandler.register(oVizFrame, function () {
+                oVizFrame.invalidate();
+            });
             // Redraw to fix potential zero-width issues
             var sTargetId = (iSelectedIndex === 0) ? "chartContainer1" : "chartContainer2";
             setTimeout(function() { 

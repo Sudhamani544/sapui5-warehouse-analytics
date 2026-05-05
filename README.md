@@ -45,4 +45,3 @@ The app will automatically open at `http://localhost:8080/index.html`*
 
 - If you are using a corporate network or proxy, ensure your npm config is set correctly.
 - If the app does not open automatically, open the browser at the local server URL shown in the terminal.
-Navigate to

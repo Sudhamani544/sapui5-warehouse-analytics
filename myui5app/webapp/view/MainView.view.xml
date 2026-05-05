@@ -12,7 +12,6 @@
             <layout:FixFlex id='chartFixFlex' minFlexSize="250">
                 <layout:fixContent>
                 <VBox id="chartHolder" alignItems="Center" busyIndicatorDelay="0" justifyContent="Center" class="contentPadding sapUiContentPadding">
-                    <Text id="welcomeText" text="{i18n>welcomeMessage}" class="sapUiLargeMarginBottom sapUiMediumMarginTop"/>
                     <Text id="welcomeDescriptionText" text="{i18n>welcomeDescription}" class="sapUiSmallMarginBottom"/>
                     <Text id="selectMetricText" text="{i18n>selectMetric}" class="sapUiSmallMarginBottom"/>
                     <RadioButtonGroup id="metricGroup" select="onMetricSelect" selectedIndex="-1" columns="2" class="sapUiMediumMarginBottom">
@@ -21,25 +20,33 @@
                     </RadioButtonGroup>
 
                     <!-- First Chart -->
-                    <Title id="titleChart1" text="{i18n>titleChart1}" level="H1" class="sapUiLargeMarginTop" visible="false" />
-                    <viz:VizFrame id="chartContainer1" height="400px" width="900px" vizType="line" visible="false" class="sapUiResponsiveMargin"/>
+                    <VBox id="section1" width="100%" alignItems="Center" visible="false">
+                        <Title id="titleChart1" text="{i18n>titleChart1}" level="H2" class="sapUiLargeMarginTop"  />
+                        <VBox id="vBox1" width="100%" fitContainer="true" class="sapUiMediumMargin">
+                            <viz:VizFrame id="chartContainer1" height="400px" width="auto" vizType="line"  class="sapUiResponsiveMargin" uiConfig="{ 'applicationSet': 'fiori' }"/>
+                        </VBox>
+                    </VBox>
 
                     <!-- Second Chart (Part 2: Shipper Performance) -->
-                    <Title id="titleChart2" text="{i18n>titleChart2}" level="H1" class="sapUiLargeMarginTop" visible="false"/>
-                    <HBox id="countrySelectorBox" alignItems="Center" displayInline="true" visible="false" class="sapUiSmallMarginBottom">
-                        <Label id="countrySelectorLabel" 
-                            text="{i18n>destinationCountry}" 
-                            class="sapUiSmallMarginEnd"/>
-                            
-                        <Select id="countrySelector"
-                                items="{countryModel>/}" 
-                                change="onCountryChange"
-                                width="200px">
-                            <core:Item id="_IDGenItem" key="{countryModel>key}" text="{countryModel>text}" />
-                        </Select>
-                    </HBox>
-                    
-                    <viz:VizFrame id="chartContainer2" height="400px" width="900px" vizType="combination" visible="false" class="sapUiResponsiveMargin"/>
+                    <VBox id="section2" width="100%" alignItems="Center" visible="false">
+                        <Title id="titleChart2" text="{i18n>titleChart2}" level="H2" class="sapUiLargeMarginTop" />
+                        <HBox id="countrySelectorBox" alignItems="Center" displayInline="true" visible="false" class="sapUiSmallMarginBottom" >
+                            <Label id="countrySelectorLabel" 
+                                text="{i18n>destinationCountry}" 
+                                class="sapUiSmallMarginEnd"/>
+                                
+                            <Select id="countrySelector"
+                                    items="{countryModel>/}" 
+                                    change="onCountryChange"
+                                    width="200px">
+                                <core:Item id="_IDGenItem" key="{countryModel>key}" text="{countryModel>text}" />
+                            </Select>
+                        </HBox>
+                        
+                        <VBox id="vBox2" width="100%" fitContainer="true" class="sapUiMediumMargin">
+                            <viz:VizFrame id="chartContainer2" height="400px" width="auto" vizType="combination"  class="sapUiResponsiveMargin" uiConfig="{ 'applicationSet': 'fiori' }"/>
+                        </VBox>
+                    </VBox>
                 </VBox>
                 </layout:fixContent>
             </layout:FixFlex>
