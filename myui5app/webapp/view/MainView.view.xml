@@ -30,7 +30,7 @@
                     <!-- Second Chart (Part 2: Shipper Performance) -->
                     <VBox id="section2" width="100%" alignItems="Center" visible="false">
                         <Title id="titleChart2" text="{i18n>titleChart2}" level="H2" class="sapUiLargeMarginTop" />
-                        <HBox id="countrySelectorBox" alignItems="Center" displayInline="true" visible="false" class="sapUiSmallMarginBottom" >
+                        <HBox id="countrySelectorBox" alignItems="Center" displayInline="true" class="sapUiSmallMarginBottom" >
                             <Label id="countrySelectorLabel" 
                                 text="{i18n>destinationCountry}" 
                                 class="sapUiSmallMarginEnd"/>
